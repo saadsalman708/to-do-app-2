@@ -2,7 +2,7 @@ import {
     auth, createUserWithEmailAndPassword, signInWithPopup, googleProvider,
     setDoc, doc, db,
     getDoc,
-} from "../firebase/config.js";
+} from "../../firebase/config.js";
 
 const fullName = document.querySelector("#fullName");
 const email = document.querySelector("#email");
