@@ -2,11 +2,18 @@ import {
     auth, signInWithEmailAndPassword, signInWithPopup, googleProvider,
     db, getDoc, doc, setDoc,
 } from "../../firebase/config.js";
+import { protectPage ,  } from "../../firebase/authguard.js";
 
 const email = document.querySelector("#email");
 const password = document.querySelector("#password");
 const btn = document.querySelector("#btn");
 const googleBtn = document.querySelector("#googleBtn");
+
+
+
+
+
+protectPage({ requiredAuth: false });
 
 
 
@@ -38,7 +45,7 @@ async function handleRedirect(userId , isNew) {
         pageRedirect = "../admin/admin.html";
     }
 
-    if (isNew) {
+    if (isNew === true) {
         titleMsg = "Account Created!"
         textMsg = "Admin has not approved yet! Wait for admin aproval";
     }
