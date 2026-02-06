@@ -6,7 +6,7 @@ import { auth, onAuthStateChanged, getDoc, doc, db, } from "./config.js";
 
 export  function protectPage({ requiredAuth = true , role , verified }) {
 
-    onAuthStateChanged( auth , async (user)=> {
+    onAuthStateChanged( auth , async (user)=> {        
 
         if (requiredAuth && !user) {
             window.location.href = "../getIn.html";
@@ -14,10 +14,6 @@ export  function protectPage({ requiredAuth = true , role , verified }) {
         }
         
         if (!user) return;
-
-        if (!requiredAuth) {
-            window.location.href = "../getIn.html";
-        }
 
         const snap = await getDoc(doc(db , "users" , user.uid));
         

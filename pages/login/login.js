@@ -1,5 +1,5 @@
 import {
-    auth, signInWithEmailAndPassword, signInWithPopup, googleProvider,
+    auth, signInWithEmailAndPassword, signInWithPopup, googleProvider, onAuthStateChanged , 
     db, getDoc, doc, setDoc,
 } from "../../firebase/config.js";
 import { protectPage ,  } from "../../firebase/authguard.js";
@@ -8,6 +8,16 @@ const email = document.querySelector("#email");
 const password = document.querySelector("#password");
 const btn = document.querySelector("#btn");
 const googleBtn = document.querySelector("#googleBtn");
+
+
+
+
+
+onAuthStateChanged(auth , (user)=> {
+    if (user) {
+        window.location.href = "../getIn.html";
+    }
+});
 
 
 

@@ -1,5 +1,5 @@
 import {
-    auth, createUserWithEmailAndPassword, signInWithPopup, googleProvider,
+    auth, createUserWithEmailAndPassword, signInWithPopup, googleProvider, onAuthStateChanged, 
     setDoc, doc, db, getDoc,
 } from "../../firebase/config.js";
 
@@ -12,7 +12,11 @@ const btn = document.querySelector("#btn");
 const googleBtn = document.querySelector("#googleBtn");
 
 
-
+onAuthStateChanged(auth , (user)=> {
+    if (user) {
+        window.location.href = "../getIn.html";
+    }
+});
 
 
 protectPage({ requiredAuth: false });
