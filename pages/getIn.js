@@ -11,12 +11,12 @@ onAuthStateChanged( auth , async (user)=> {
     const profile = snap.data();
 
     if (profile.role === "admin") {
-        window.location.href = "./admin/admin.html";
+        window.location.replace("./admin/admin.html");
         return;
     }
     
     if (profile.role === "user" && profile.isVerified === true) {
-        window.location.href = "./user/user.html";
+        window.location.replace("./user/user.html");
         return;
     }
 

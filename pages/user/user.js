@@ -5,19 +5,37 @@ import { auth, onAuthStateChanged , signOut ,
 import { protectPage ,  } from "../../firebase/authguard.js";
 
 const logOutBtn = document.querySelector("#logOutBtn");
+const txt = document.querySelector("#txt");
+const file = document.querySelector("#file");
+const addBtn = document.querySelector("#addBtn");
+const clearBtn = document.querySelector("#clearBtn");
 
 
 
 
 
-protectPage({ role: "user" , verified: true });
+protectPage({ role: "user" , verified: true , onSuccess });
 
 
 
 
 
 logOutBtn.addEventListener("click" , async()=> {
-    await signOut( auth ).then(()=> {
-        window.location.href = "../getIn.html";
-    });
+    await signOut( auth );
 });
+
+
+
+
+
+function name(params) {
+    
+}
+
+
+
+
+
+function onSuccess() {
+    console.log("OK");
+}

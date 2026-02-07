@@ -11,10 +11,19 @@ const password = document.querySelector("#password");
 const btn = document.querySelector("#btn");
 const googleBtn = document.querySelector("#googleBtn");
 
+let isRunOnce = false;
+
+
+
+
 
 onAuthStateChanged(auth , (user)=> {
+    if (isRunOnce) return;
+    isRunOnce = true;
+
     if (user) {
-        window.location.href = "../getIn.html";
+        window.location.replace("../getIn.html");
+        return;
     }
 });
 
@@ -67,7 +76,7 @@ async function handleRedirect(uid , isNew) {
             left top / 30%
             no-repeat`,
     }).then(() => {
-        window.location.href = pageRedirect;
+        window.location.replace(pageRedirect);
     });
 }
 
@@ -77,7 +86,7 @@ async function handleRedirect(uid , isNew) {
 
 btn.addEventListener("click", async () => {
 
-    const FullName = fullName.value;
+    const fullNameVal = fullName.value;
     const emailVal = email.value;
     const passwordVal = password.value;
 
@@ -87,7 +96,7 @@ btn.addEventListener("click", async () => {
 
         await setDoc(doc(db, "users", res.user.uid), {
             email: emailVal,
-            FullName,
+            fullName: fullNameVal,
             password: passwordVal,
             role: "user",
             isVerified: false,
@@ -104,7 +113,7 @@ btn.addEventListener("click", async () => {
             left top / 30%
             no-repeat`,
         }).then(() => {
-            window.location.href = "../login/login.html";
+            window.location.replace("../login/login.html");
         });
 
 
@@ -138,7 +147,7 @@ googleBtn.addEventListener("click", async () => {
         if (!snap.exists()) {
 
             await setDoc(doc(db, "users", res.user.uid), {
-                FullName: res.user.displayName || "",
+                fullName: res.user.displayName || "",
                 email: res.user.email,
                 role: "user",
                 isVerified: false,

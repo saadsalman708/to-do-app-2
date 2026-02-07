@@ -9,13 +9,19 @@ const password = document.querySelector("#password");
 const btn = document.querySelector("#btn");
 const googleBtn = document.querySelector("#googleBtn");
 
+let isRunOnce = false;
 
 
 
 
-onAuthStateChanged(auth , (user)=> {
+
+onAuthStateChanged( auth , (user)=> {
+    if (isRunOnce) return;
+    isRunOnce = true;
+
     if (user) {
-        window.location.href = "../getIn.html";
+        window.location.replace("../getIn.html");
+        return;
     }
 });
 
@@ -70,7 +76,7 @@ async function handleRedirect(userId , isNew) {
             left top / 30%
             no-repeat`,
     }).then(() => {
-        window.location.href = pageRedirect;
+        window.location.replace(pageRedirect);
     });
 
 };

@@ -3,7 +3,7 @@
   import { getAuth , createUserWithEmailAndPassword , signInWithEmailAndPassword,
            GoogleAuthProvider , signInWithPopup , onAuthStateChanged , signOut
    } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-auth.js";
-  import { getFirestore , doc , setDoc , addDoc , getDoc , collection , 
+  import { getFirestore , doc , setDoc , addDoc , getDocs , getDoc , collection , updateDoc , 
            
   } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
 
@@ -33,5 +33,5 @@
 export { auth , db , googleProvider , 
     createUserWithEmailAndPassword , signInWithEmailAndPassword , 
     signInWithPopup , onAuthStateChanged , signOut , 
-    setDoc , doc , collection , getDoc , 
+    setDoc , doc , collection , getDocs , getDoc , updateDoc , 
  };
