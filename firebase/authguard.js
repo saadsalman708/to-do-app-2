@@ -28,8 +28,8 @@ export function protectPage({ requiredAuth = true , role , verified , onSuccess 
             return;
         }
         
-        if (verified && profile.isVerified !== verified) {
-            window.location.replace("../getIn.html");
+        if (verified && profile.role === "user" && profile.isVerified !== verified) {              
+            window.location.replace("../waiting/wait.html");
             return;
         }
 

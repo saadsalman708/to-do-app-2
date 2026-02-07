@@ -1,5 +1,9 @@
 import { auth, db, doc, getDoc, onAuthStateChanged } from "../firebase/config.js";
 
+
+
+
+
 onAuthStateChanged( auth , async (user)=> {
 
     if (!user) return;
@@ -11,12 +15,17 @@ onAuthStateChanged( auth , async (user)=> {
     const profile = snap.data();
 
     if (profile.role === "admin") {
-        window.location.replace("./admin/admin.html");
+        window.location.href = "./admin/admin.html";
         return;
     }
     
     if (profile.role === "user" && profile.isVerified === true) {
-        window.location.replace("./user/user.html");
+        window.location.href = "./user/user.html";
+        return;
+    }
+
+    if (profile.role === "user" && profile.isVerified === false) {
+        window.location.href = "./waiting/wait.html";
         return;
     }
 

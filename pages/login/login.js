@@ -51,7 +51,7 @@ async function handleRedirect(userId , isNew) {
         titleMsg = "Not Verified!";
         textMsg = "Admin has not approved yet!";
         iconMsg = "warning";
-        pageRedirect = "../getIn.html";
+        pageRedirect = "../waiting/wait.html";
     };
 
     if (profile.role === "admin") {

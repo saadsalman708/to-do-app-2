@@ -50,6 +50,7 @@ async function handleRedirect(uid , isNew) {
     if (!profile.isVerified) {
         textMsg = "Admin haven't Aprove yet! Wait for admin aproval";
         iconMsg = "warning";
+        pageRedirect = "../waiting/wait.html";
     } else {
         textMsg = "Welcome User";
         pageRedirect = "../user/user.html";
